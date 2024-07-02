@@ -1,0 +1,25 @@
+# SPDX-FileCopyrightText: 2021 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.com>
+# SPDX-FileContributor: Andrew Hayzen <andrew.hayzen@kdab.com>
+# SPDX-FileContributor: Gerhard de Clercq <gerhard.declercq@kdab.com>
+#
+# SPDX-License-Identifier: MIT OR Apache-2.0
+[package]
+name = "cxx-qt-gen"
+version.workspace = true
+authors = ["Andrew Hayzen <andrew.hayzen@kdab.com>", "Gerhard de Clercq <gerhard.declercq@kdab.com>", "Leon Matthes <leon.matthes@kdab.com>"]
+edition.workspace = true
+license.workspace = true
+description = "Code generation for integrating `cxx-qt` into higher level tools"
+repository.workspace = true
+exclude = ["update_expected.sh"]
+
+[dependencies]
+proc-macro2.workspace = true
+syn.workspace = true
+quote.workspace = true
+convert_case.workspace = true
+clang-format = "0.3"
+indoc = "2.0"
+
+[dev-dependencies]
+pretty_assertions = "1.2"

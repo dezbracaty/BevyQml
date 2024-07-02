@@ -1,0 +1,61 @@
+# SPDX-FileCopyrightText: 2022 Klarälvdalens Datakonsult AB, a KDAB Group company <info@kdab.com>
+# SPDX-FileContributor: Be Wilson <be.wilson@kdab.com>
+#
+# SPDX-License-Identifier: MIT OR Apache-2.0
+
+[workspace]
+members = [
+    "crates/cxx-qt",
+    "crates/cxx-qt-build",
+    "crates/cxx-qt-gen",
+    "crates/cxx-qt-lib",
+    "crates/cxx-qt-lib-headers",
+    "crates/qt-build-utils",
+    "crates/cxx-qt-lib-extras-headers",
+    "crates/cxx-qt-lib-extras",
+
+    "bevyQml/rust",
+    "tests/basic_cxx_only/rust",
+    "tests/basic_cxx_qt/rust",
+    "tests/qt_types_standalone/rust",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/KDAB/cxx-qt/"
+version = "0.6.1"
+
+# Note a version needs to be specified on dependencies of packages
+# we publish, otherwise crates.io complains as it doesn't know the version.
+[workspace.dependencies]
+cxx-qt = { path = "crates/cxx-qt" }
+cxx-qt-macro = { path = "crates/cxx-qt-macro", version = "0.6.1" }
+cxx-qt-build = { path = "crates/cxx-qt-build", version = "0.6.1" }
+cxx-qt-gen = { path = "crates/cxx-qt-gen", version = "0.6.1" }
+cxx-qt-lib = { path = "crates/cxx-qt-lib", version = "0.6.1" }
+cxx-qt-lib-headers = { path = "crates/cxx-qt-lib-headers", version = "0.6.1" }
+qt-build-utils = { path = "crates/qt-build-utils", version = "0.6.1" }
+cxx-qt-lib-extras-headers = { path = "crates/cxx-qt-lib-extras-headers", version = "0.6.1" }
+cxx-qt-lib-extras = { path = "crates/cxx-qt-lib-extras", version = "0.6.1" }
+
+cc = { version = "1.0.89", features = ["parallel"] }
+# Ensure that the example comments are kept in sync
+# ./examples/cargo_without_cmake/Cargo.toml
+# ./examples/qml_minimal/rust/Cargo.toml
+# ./book/src/getting-started/4-cargo-executable.md
+# ./book/src/getting-started/5-cmake-integration.md
+# TODO: Can we re-export cxx from cxx-qt, so people don't need to manually add this anymore?
+cxx = "1.0.95"
+cxx-build = { version = "1.0.95", features = [ "parallel" ] }
+cxx-gen = "0.7.121"
+convert_case = "0.6"
+proc-macro2 = "1.0"
+syn = { version = "2.0", features = ["extra-traits", "full"] }
+quote = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+accesskit_winit = {version = "0.22.0"}
+
+# [patch.crates-io]
